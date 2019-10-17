@@ -1,0 +1,15 @@
+{
+    "sqltools.connections": [
+        {
+            "askForPassword": false,
+            "connectionTimeout": 30,
+            "database": "movies",
+            "dialect": "MSSQL",
+            "name": "mssql",
+            "password": "S3cur3P@ssw0rd",
+            "port": 1433,
+            "server": "127.0.0.1",
+            "username": "sa"
+        }
+    ]
+}

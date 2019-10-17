@@ -1,0 +1,37 @@
+version: "3"
+
+networks:
+  movies:
+    external: false
+
+volumes:
+  data:
+
+services:
+  movies_db:
+    container_name: movies_db
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=S3cur3P@ssw0rd
+      - MSSQL_PID=Express
+    ports:
+      - 1433:1433
+    networks: 
+      - movies
+    volumes:
+      - data:/var/opt/mssql 
+
+  moviesapp:
+    container_name: movies_app
+    image: devops/moviesapp
+    build:
+      context: .
+    networks: 
+      - movies
+    ports:
+      - 8081:80
+    depends_on: 
+      - movies_db
+      
+    
