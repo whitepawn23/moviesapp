@@ -3,19 +3,19 @@ pipeline {
   stages {
     stage('Build') { 
       steps {
-        sh "docker build -t parciniegas/moviesapp:$BUILD_NUMBER -t parciniegas/moviesapp:latest ."
+        sh "docker build -t whitepawn23/moviesapp:$BUILD_NUMBER -t whitepawn23/moviesapp:latest ."
       }
     }
     stage('Publish') {
       steps {
-        sh "docker login -u parciniegas -p P2ssw0rd"
-        sh "docker push parciniegas/moviesapp"
+        sh "docker login -u whitepawn23 -p DockerHub_91534942"
+        sh "docker push whitepawn23/moviesapp"
       }
     }
     stage('Remove Image') {
       steps {
-        sh "docker rmi parciniegas/moviesapp:$BUILD_NUMBER && \
-            docker rmi parciniegas/moviesapp:latest"
+        sh "docker rmi whitepawn23/moviesapp:$BUILD_NUMBER && \
+            docker rmi whitepawn23/moviesapp:latest"
       }
     }
   }
