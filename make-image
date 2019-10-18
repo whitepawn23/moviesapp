@@ -3,10 +3,7 @@ pipeline {
   stages {
     stage('Build') { 
       steps {
-
-        sh "docker build -t parciniegas/moviesapp:$BUILD_NUMBER -t parciniegas/moviesapp:latest . && \
-            docker login -u parciniegas -p P2ssw0rd && \
-            docker push parciniegas/moviesapp"
+        sh "docker build -t parciniegas/moviesapp:$BUILD_NUMBER -t parciniegas/moviesapp:latest ."
       }
     }
     stage('Publish') {
