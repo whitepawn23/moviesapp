@@ -24,10 +24,10 @@ services:
 
   moviesapp:
     container_name: movies_app
-    image: parciniegas/moviesapp:latest
+    image: whitepawn23/moviesapp:latest
     networks: 
       - movies
     ports:
-      - 8181:80
+      - 8080:80
     depends_on: 
       - movies_db
