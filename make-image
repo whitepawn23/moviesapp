@@ -1,0 +1,25 @@
+pipeline {
+  agent any
+  stages {
+    stage('Build') { 
+      steps {
+
+        sh "docker build -t parciniegas/moviesapp:$BUILD_NUMBER -t parciniegas/moviesapp:latest . && \
+            docker login -u parciniegas -p P2ssw0rd && \
+            docker push parciniegas/moviesapp"
+      }
+    }
+    stage('Publish') {
+      steps {
+        sh "docker login -u parciniegas -p P2ssw0rd"
+        sh "docker push parciniegas/moviesapp"
+      }
+    }
+    stage('Remove Image') {
+      steps {
+        sh "docker rmi parciniegas/moviesapp:$BUILD_NUMBER && \
+            docker rmi parciniegas/moviesapp:latest"
+      }
+    }
+  }
+}

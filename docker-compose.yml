@@ -16,7 +16,7 @@ services:
       - SA_PASSWORD=S3cur3P@ssw0rd
       - MSSQL_PID=Express
     ports:
-      - 1433:1433
+      - 1434:1433
     networks: 
       - movies
     volumes:
@@ -24,14 +24,10 @@ services:
 
   moviesapp:
     container_name: movies_app
-    image: devops/moviesapp
-    build:
-      context: .
+    image: parciniegas/moviesapp:latest
     networks: 
       - movies
     ports:
-      - 8081:80
+      - 8181:80
     depends_on: 
       - movies_db
-      
-    
